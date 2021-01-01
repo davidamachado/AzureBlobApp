@@ -1,0 +1,32 @@
+﻿@using TestWebAzureApp.Controllers; 
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-action="Upload" class="btn btn-outline-primary">Add Image</a>
+
+<div class="row">
+    <table class="table">
+        <thead>
+        <th>File Name</th>
+        <th>Preview</th>
+        <th></th>
+        </thead>
+        <tbody>
+            @foreach (var blob in HomeController.BlobList)
+            {
+                <tr>
+                    <td>@blob.Name</td>
+                    <td><img src="@BlobController.GetUri(blob.Name)" height="100" /></td>
+                    <td>
+                        <form asp-action="Delete">
+                            <input type="hidden" value="@blob.Name" id="fileName" name="fileName" />
+                            <input type="submit" value="Delete" class="btn btn-outline-danger" />
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,23 @@
+﻿@using TestWebAzureApp.Controllers
+@{
+    ViewData["Title"] = "Upload Page";
+}
+
+<div class="row">
+    <div class="col-4">
+        <form asp-action="Upload" enctype="multipart/form-data">
+            <div class="form-group">
+                <input type="file" name="formFile" accept="image/*" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-outline-primary"/>
+            </div>
+        </form>
+        @if (ViewData["message"] != null)
+        {
+            <div class="text-danger">
+                <p>@ViewData["message"]</p>
+            </div>
+        }
+    </div>
+</div>
